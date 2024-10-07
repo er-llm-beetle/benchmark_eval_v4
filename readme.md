@@ -31,6 +31,7 @@ python -m venv venv
 
 
 Daha sonra virtual environment-i aktivləşdirmək üçün:
+
 Windows:
 ```bash
 venv\Scripts\activate
