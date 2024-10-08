@@ -23,7 +23,7 @@ MacOS:
 mkdir my_project
 cd my_project
 python3 -m venv venv
-```bash
+```
 
 
 Daha sonra virtual environment-i aktivləşdirmək üçün:
