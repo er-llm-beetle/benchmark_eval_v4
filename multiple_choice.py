@@ -283,14 +283,6 @@ def get_model_answer_multiple_options(question, options, model, dstype) -> str:
             },
             {
                 "role": "user",
-                "content": "Question:\nDuzları sudan ayırmağın ən yaxşı yolu\nOptions:\nA) yağ,\nB) istilik,\nC) maqnit,\nD) əsəbləşmə alkoqolu\n\nAnswer:"
-            },
-            {
-                "role": "assistant",
-                "content": "B"
-            },
-            {
-                "role": "user",
                 "content": "Question:\nHansı material ən yaxşı istilik izolyatorudur?\nOptions:\nA) şüşə,\nB) metal,\nC) su,\nD) ağac\n\nAnswer:"
             },
             {
@@ -299,7 +291,8 @@ def get_model_answer_multiple_options(question, options, model, dstype) -> str:
             },
             {
                 "role": "user",
-                "content": "Question:\nBir tələbə təcrübəni təkrarlaya bilmək üçün hansı addımı atmalıdır?\nOptions:\nA) təcrübəni bir neçə dəfə təkrarlayın,\nB) bütün prosedurların qeydini saxlayır,\nC) Təcrübə quruluşunun bir modelini hazırlayın,\nD) Təcrübə şərtlərinin bir hissəsini dəyişdirin\n\nAnswer:"
+                # "content": "Question:\nDuzları sudan ayırmağın ən yaxşı yolu\nOptions:\nA) yağ,\nB) istilik,\nC) maqnit,\nD) əsəbləşmə alkoqolu\n\nAnswer:" # old version
+                "content": "Question:\nDuzun sudan ayrılması üçün ən yaxşı yol ___ istifadəsidir\nOptions:\nA) neft,\nB) İstilik,\nC) maqnit,\nD) İsopropil spirt\n\nAnswer:" # new arc version
             },
             {
                 "role": "assistant",
@@ -307,7 +300,17 @@ def get_model_answer_multiple_options(question, options, model, dstype) -> str:
             },
             {
                 "role": "user",
-                "content": "Question:\nDDT adlı kimyəvi maddə bir vaxtlar zərərli həşəratları öldürmək üçün istifadə olunurdu. Araşdırmalar bu kimyəvi maddənin bəzi quş növləri üçün zərərli olduğunu göstərdikdə, DDT-nin istifadəsi dayandırıldı. Elmi proses DDT-nin quşlara zərər verdiyini anlamalarına necə kömək edə bildi?\nOptions:\nA) Kimyəvi maddə ilə bağlı müxtəlif proqnozlar verildi,\nB) Kimyəvi maddə ilə aparılan testlər fərqli nəticələr verdi,\nC) Kimyəvi maddə ilə təkrarlanan sınaqlar eyni nəticəyə gəldi,\nD) Kimyəvi maddənin xüsusiyyətlərini yoxlamaq üçün müxtəlif prosedurlardan istifadə edilmişdir\n\nAnswer:"
+                # "content": "Question:\nTələbə təcrübəni təkrarlaya bilmək üçün hansı addımı atmalıdır?\nOptions:\nA) təcrübəni bir neçə dəfə təkrarlayın,\nB) bütün prosedurların qeydini saxlayır,\nC) Təcrübə quruluşunun bir modelini hazırlayın,\nD) Təcrübə şərtlərinin bir hissəsini dəyişdirin\n\nAnswer:" # old version
+               "content": "Question:\nŞagird təcrübəni təkrarlaya bilmək üçün ilk öncə hansı addımı atmalıdır?\nOptions:\nA) Təcrübəni dəfələrlə aparmalıdır,\nB) bütün prosedurları qeydə almalıdır,\nC) Eksperimentin quruluşunun modelini hazırlamalıdır,\nD) Eksperimentin bəzi şərtlərini dəyişməlidir\n\nAnswer:" # new arc
+            },
+            {
+                "role": "assistant",
+                "content": "B"
+            },
+            {
+                "role": "user",
+                # "content": "Question:\nDDT adlı kimyəvi maddə bir vaxtlar zərərli həşəratları öldürmək üçün istifadə olunurdu. Araşdırmalar bu kimyəvi maddənin bəzi quş növləri üçün zərərli olduğunu göstərdikdə, DDT-nin istifadəsi dayandırıldı. Elmi proses DDT-nin quşlara zərər verdiyini anlamalarına necə kömək edə bildi?\nOptions:\nA) Kimyəvi maddə ilə bağlı müxtəlif proqnozlar verildi,\nB) Kimyəvi maddə ilə aparılan testlər fərqli nəticələr verdi,\nC) Kimyəvi maddə ilə təkrarlanan sınaqlar eyni nəticəyə gəldi,\nD) Kimyəvi maddənin xüsusiyyətlərini yoxlamaq üçün müxtəlif prosedurlardan istifadə edilmişdir\n\nAnswer:" # old version
+                "content": "Question:\nDDT adlı bir kimyəvi maddə bir zamanlar zərərverici həşəratları öldürmək üçün istifadə edilirdi. Araşdırmalar bu kimyəvi maddənin bəzi növ quşlar üçün zərərli olduğunu göstərdiyində, DDT-nin istifadəsi dayandırıldı. Elmi proses alimlərin DDT-nin quşlara zərərli olduğunu başa düşmələrinə ən yaxşı şəkildə necə kömək edə bildi?\nOptions:\nA) Kimyəvi maddə haqqında müxtəlif proqnozlar verildi,\nB) Kimyəvi maddə üzərində aparılan testlər müxtəlif nəticələr verdi,\nC) Kimyəvi maddə üzrə təkrarlanan sınaqlar eyni nəticəni göstərdi,\nD) Kimyəvi maddənin xüsusiyyətlərini yoxlamaq üçün müxtəlif prosedurlar tətbiq edildi\n\nAnswer:" # new version
             },
             {
                 "role": "assistant",
@@ -315,11 +318,13 @@ def get_model_answer_multiple_options(question, options, model, dstype) -> str:
             },
             {
                 "role": "user",
-                "content": "Question:\nKainatdakı bütün qalaktikalar \nOptions:\nA) çoxlu ulduzlardan ibarətdir,\nB) saatın istiqamətində dönün,\nC) Kimyəvi maddə ilə təkrarlanan sınaqlar eyni nəticəyə gəldi,\nD) eyni sayda ulduz var\n\nAnswer:"
+                # "content": "Question:\nKainatdakı bütün qalaktikalar\nOptions:\nA) çoxlu ulduzlardan ibarətdir,\nB) saatın istiqamətində dönür,\nC) Kimyəvi maddə ilə təkrarlanan sınaqlar eyni nəticəyə gəldi,\nD) eyni sayda ulduz var\n\nAnswer:"
+                "content": "Question:\nSəs dalğaları və okean dalğaları hər ikisi oxşardır çünki, hər ikisi\nOptions:\nA) uzununa dalğalardır,\nB) eyni tezlikdədirlər,\nC) enerjini bir yerdən o biri yerə daşıyır,\nD) Müəyyən vasitəni bir yerdən başqa yerə aparır\n\nAnswer:" # new version
             },
             {
                 "role": "assistant",
                 "content": "A"
+                # "content": "C"
             },
             {
                 "role": "user",
@@ -333,46 +338,51 @@ def get_model_answer_multiple_options(question, options, model, dstype) -> str:
         #         "role": "system",
         #         "content": "Sən suallara Azərbaycan dilində, məntiq və bilik əsasında (based on reasoning and knowledge) cavab verən süni intellektsən. Verilmiş suala əsaslanaraq ən dəqiq cavabı seçmək sənin tapşırığındır. Suala ən yaxşı cavab verən tək hərfi (A, B, C, D) seç. Yalnız seçilmiş cavabın hərfini, heç bir əlavə mətni olmadan cavab ver."
         #     },
-        #     {
-        #         "role": "user",
-        #         "content": "Sual:\nDuzları sudan ayırmağın ən yaxşı yolu\nSeçimlər:\nA) yağ,\nB) istilik,\nC) maqnit,\nD) əsəbləşmə alkoqolu\n\nCavab:"
-        #     },
-        #     {
-        #         "role": "assistant",
-        #         "content": "B"
-        #     },
-        #     {
-        #         "role": "user",
-        #         "content": "Sual:\nŞagirdlər sinifdəki bir tankda bəzi cırtdan saxlayırdılar. Tank gündə bir neçə saat günəş işığı alacaq bir ərazidə saxlanıldı. Tankın bir hissəsində su, digər hissəsində isə bitkilərin böyüdüyü torpaq var idi. Cırtdanlar bütün enerjisini haradan alırdılar?\nSeçimlər:\nA) torpaq,\nB) su,\nC) bitkilər,\nD) günəş işığı\n\nCavab:"
-        #     },
-        #     {
-        #         "role": "assistant",
-        #         "content": "C"
-        #     },
-        #     {
-        #         "role": "user",
-        #         "content": "Sual:\nBir tələbə təcrübəni təkrarlaya bilmək üçün hansı addımı atmalıdır?\nSeçimlər:\nA) təcrübəni bir neçə dəfə təkrarlayın,\nB) bütün prosedurların qeydini saxlayır,\nC) Təcrübə quruluşunun bir modelini hazırlayın,\nD) Təcrübə şərtlərinin bir hissəsini dəyişdirin\n\nCavab:"
-        #     },
-        #     {
-        #         "role": "assistant",
-        #         "content": "B"
-        #     },
-        #     {
-        #         "role": "user",
-        #         "content": "Sual:\nDDT adlı kimyəvi maddə bir vaxtlar zərərli həşəratları öldürmək üçün istifadə olunurdu. Araşdırmalar bu kimyəvi maddənin bəzi quş növləri üçün zərərli olduğunu göstərdikdə, DDT-nin istifadəsi dayandırıldı. Elmi proses DDT-nin quşlara zərər verdiyini anlamalarına necə kömək edə bildi?\nSeçimlər:\nA) Kimyəvi maddə ilə bağlı müxtəlif proqnozlar verildi,\nB) Kimyəvi maddə ilə aparılan testlər fərqli nəticələr verdi,\nC) Kimyəvi maddə ilə təkrarlanan sınaqlar eyni nəticəyə gəldi,\nD) Kimyəvi maddənin xüsusiyyətlərini yoxlamaq üçün müxtəlif prosedurlardan istifadə edilmişdir\n\nCavab:"
-        #     },
-        #     {
-        #         "role": "assistant",
-        #         "content": "C"
-        #     },
-        #     {
-        #         "role": "user",
-        #         "content": "Sual:\nKainatdakı bütün qalaktikalar \nSeçimlər:\nA) çoxlu ulduzlardan ibarətdir,\nB) saatın istiqamətində dönün,\nC) Kimyəvi maddə ilə təkrarlanan sınaqlar eyni nəticəyə gəldi,\nD) eyni sayda ulduz var\n\nCavab:"
-        #     },
-        #     {
-        #         "role": "assistant",
-        #         "content": "A"
-        #     },
+#             {
+#                 "role": "user",
+#                 "content": "Sual:\nHansı material ən yaxşı istilik izolyatorudur?\nSeçimlər:\nA) şüşə,\nB) metal,\nC) su,\nD) ağac\n\nCavab:"
+#             },
+#             {
+#                 "role": "assistant",
+#                 "content": "D"
+#             },
+#             {
+#                 "role": "user",
+#                 "content": "Sual:\nDuzları sudan ayırmağın ən yaxşı yolu\nSeçimlər:\nA) yağ,\nB) istilik,\nC) maqnit,\nD) əsəbləşmə alkoqolu\n\nCavab:" # old version
+#                 # "content": "Sual:\nDuzun sudan ayrılması üçün ən yaxşı yol ___ istifadəsidir\nSeçimlər:\nA) neft,\nB) İstilik,\nC) maqnit,\nD) İsopropil spirt\n\nCavab:" # new arc version
+#             },
+#             {
+#                 "role": "assistant",
+#                 "content": "B"
+#             },
+#             {
+#                 "role": "user",
+#                 "content": "Sual:\nTələbə təcrübəni təkrarlaya bilmək üçün hansı addımı atmalıdır?\nSeçimlər:\nA) təcrübəni bir neçə dəfə təkrarlayın,\nB) bütün prosedurların qeydini saxlayır,\nC) Təcrübə quruluşunun bir modelini hazırlayın,\nD) Təcrübə şərtlərinin bir hissəsini dəyişdirin\n\nCavab:" # old version
+# #                "content": "Sual:\nŞagird təcrübəni təkrarlaya bilmək üçün ilk öncə hansı addımı atmalıdır?\nSeçimlər:\nA) Təcrübəni dəfələrlə aparmalıdır,\nB) bütün prosedurları qeydə almalıdır,\nC) Eksperimentin quruluşunun modelini hazırlamalıdır,\nD) Eksperimentin bəzi şərtlərini dəyişməlidir\n\nCavab:" # new arc
+#             },
+#             {
+#                 "role": "assistant",
+#                 "content": "B"
+#             },
+#             {
+#                 "role": "user",
+#                 "content": "Sual:\nDDT adlı kimyəvi maddə bir vaxtlar zərərli həşəratları öldürmək üçün istifadə olunurdu. Araşdırmalar bu kimyəvi maddənin bəzi quş növləri üçün zərərli olduğunu göstərdikdə, DDT-nin istifadəsi dayandırıldı. Elmi proses DDT-nin quşlara zərər verdiyini anlamalarına necə kömək edə bildi?\nSeçimlər:\nA) Kimyəvi maddə ilə bağlı müxtəlif proqnozlar verildi,\nB) Kimyəvi maddə ilə aparılan testlər fərqli nəticələr verdi,\nC) Kimyəvi maddə ilə təkrarlanan sınaqlar eyni nəticəyə gəldi,\nD) Kimyəvi maddənin xüsusiyyətlərini yoxlamaq üçün müxtəlif prosedurlardan istifadə edilmişdir\n\nCavab:" # old version
+#                 # "content": "Sual:\nDDT adlı bir kimyəvi maddə bir zamanlar zərərverici həşəratları öldürmək üçün istifadə edilirdi. Araşdırmalar bu kimyəvi maddənin bəzi növ quşlar üçün zərərli olduğunu göstərdiyində, DDT-nin istifadəsi dayandırıldı. Elmi proses alimlərin DDT-nin quşlara zərərli olduğunu başa düşmələrinə ən yaxşı şəkildə necə kömək edə bildi?\nSeçimlər:\nA) Kimyəvi maddə haqqında müxtəlif proqnozlar verildi,\nB) Kimyəvi maddə üzərində aparılan testlər müxtəlif nəticələr verdi,\nC) Kimyəvi maddə üzrə təkrarlanan sınaqlar eyni nəticəni göstərdi,\nD) Kimyəvi maddənin xüsusiyyətlərini yoxlamaq üçün müxtəlif prosedurlar tətbiq edildi\n\nCavab:" # new version
+#             },
+#             {
+#                 "role": "assistant",
+#                 "content": "C"
+#             },
+#             {
+#                 "role": "user",
+#                 "content": "Sual:\nKainatdakı bütün qalaktikalar\nSeçimlər:\nA) çoxlu ulduzlardan ibarətdir,\nB) saatın istiqamətində dönür,\nC) Kimyəvi maddə ilə təkrarlanan sınaqlar eyni nəticəyə gəldi,\nD) eyni sayda ulduz var\n\nCavab:"
+#                 # "content": "Sual:\nSəs dalğaları və okean dalğaları hər ikisi oxşardır çünki, hər ikisi\nSeçimlər:\nA) uzununa dalğalardır,\nB) eyni tezlikdədirlər,\nC) enerjini bir yerdən o biri yerə daşıyır,\nD) Müəyyən vasitəni bir yerdən başqa yerə aparır\n\nCavab:"
+#             },
+#             {
+#                 "role": "assistant",
+#                 "content": "A"
+#                 # "content": "C"
+#             },
         # #     {
         #         "role": "user",
         #         "content": f"Sual:\n{question}\nSeçimlər:\n{options}"

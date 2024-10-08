@@ -25,10 +25,6 @@ cd my_project
 python3 -m venv venv
 ```bash
 
-```bash
-python -m venv venv
-```
-
 
 Daha sonra virtual environment-i aktivləşdirmək üçün:
 
@@ -44,6 +40,7 @@ source venv/bin/activate
 
 
 requirements.txt faylını quraşdırmaq üçün isə aşağıdakı əmri yerinə yetirin:
+
 ```bash
 pip install -r requirements.txt
 ```
