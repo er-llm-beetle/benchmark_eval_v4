@@ -11,8 +11,8 @@ metadata:
       # - llama3.1_az
       # - llama3.1_az_v2
       - "llama3.2:3b-instruct-fp16"  
-    api: 
-      - gpt-4o-mini # uncomment if you want to use api based models
+    # api: 
+      # - gpt-4o-mini # uncomment if you want to use api based models
   benchmark_types:
     # QA: "Handles questions with simple Q&A format"
     # ContextQA: "Handles questions with context and answers"
@@ -28,7 +28,7 @@ metadata:
   selection:
     mode:
       - local
-      - api # uncomment if you want to use api based models
+      # - api # uncomment if you want to use api based models
 dataset_files:
   # - "datasets/input_datasets/LLM_BENCH_qa.xlsx"
   # - "datasets/input_datasets/Quad_benchmark_cqa.xlsx"
